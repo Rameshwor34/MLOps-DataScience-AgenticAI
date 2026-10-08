@@ -1,0 +1,25 @@
+{
+  "query": "Can you check the status of my order?",
+  "prompt_version": "v1",
+  "trajectory": [
+    {
+      "type": "decision",
+      "iteration": 1,
+      "action": "ask_clarification",
+      "arguments": {
+        "question": "Could you please provide your order number so I can check the status for you?"
+      },
+      "reason": "The user requested an order status check but did not provide an order number.",
+      "confidence": 0.95,
+      "tokens": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 407,
+        "estimated": false
+      }
+    }
+  ],
+  "final_answer": "Could you please provide your order number so I can check the status for you?",
+  "termination_reason": "clarification_required",
+  "generated_by": "real_gemini"
+}

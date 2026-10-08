@@ -1,0 +1,910 @@
+{
+  "evaluation_type": "deterministic_controller_regression",
+  "provider": "MockAgentProvider",
+  "metrics": {
+    "total_cases": 10,
+    "task_completion_rate": 1.0,
+    "tool_call_correctness": 0.8,
+    "argument_correctness": 0.8,
+    "average_trajectory_length": 2.1,
+    "average_tool_calls": 1.1,
+    "average_tokens": 1312.8,
+    "average_latency_ms": 217.6388,
+    "hard_failures": 0,
+    "soft_failures": 0,
+    "cascading_soft_failures": 0
+  },
+  "cases": [
+    {
+      "id": "simple_order_status",
+      "category": "simple_lookup",
+      "completion": true,
+      "status_correct": true,
+      "tool_calls_correct": true,
+      "arguments_correct": true,
+      "expected_actions": [
+        "get_order_status"
+      ],
+      "actual_actions": [
+        "get_order_status"
+      ],
+      "expected_arguments": [
+        {
+          "order_id": "ORD-1003"
+        }
+      ],
+      "actual_arguments": [
+        {
+          "order_id": "ORD-1003"
+        }
+      ],
+      "status": "completed",
+      "iterations": 2,
+      "tool_calls": 1,
+      "tokens": 1125,
+      "latency_ms": 0.486,
+      "hard_failure": false,
+      "soft_failure": false,
+      "cascading_soft_failure": false,
+      "trajectory": [
+        {
+          "type": "decision",
+          "iteration": 1,
+          "action": "get_order_status",
+          "arguments": {
+            "order_id": "ORD-1003"
+          },
+          "reason": "The customer explicitly requested the status of this order.",
+          "confidence": 0.99,
+          "tokens": {
+            "input_tokens": 269,
+            "output_tokens": 41,
+            "total_tokens": 310,
+            "estimated": true
+          }
+        },
+        {
+          "type": "tool_execution",
+          "iteration": 1,
+          "action": "get_order_status",
+          "arguments": {
+            "order_id": "ORD-1003"
+          },
+          "success": true,
+          "latency_ms": 0.262,
+          "error": null
+        },
+        {
+          "type": "decision",
+          "iteration": 2,
+          "action": "final_answer",
+          "arguments": {},
+          "reason": "The order status has been verified.",
+          "confidence": 0.99,
+          "tokens": {
+            "input_tokens": 497,
+            "output_tokens": 28,
+            "total_tokens": 525,
+            "estimated": true
+          }
+        },
+        {
+          "type": "final_answer_generation",
+          "iteration": 2,
+          "latency_ms": 0.02,
+          "tokens": {
+            "input_tokens": 278,
+            "output_tokens": 12,
+            "total_tokens": 290,
+            "estimated": true
+          }
+        }
+      ],
+      "answer": "Order ORD-1003 has been verified successfully."
+    },
+    {
+      "id": "simple_product_lookup",
+      "category": "simple_lookup",
+      "completion": true,
+      "status_correct": true,
+      "tool_calls_correct": true,
+      "arguments_correct": true,
+      "expected_actions": [
+        "get_product_info"
+      ],
+      "actual_actions": [
+        "get_product_info"
+      ],
+      "expected_arguments": [
+        {
+          "product_id": "PROD-001"
+        }
+      ],
+      "actual_arguments": [
+        {
+          "product_id": "PROD-001"
+        }
+      ],
+      "status": "completed",
+      "iterations": 2,
+      "tool_calls": 1,
+      "tokens": 1190,
+      "latency_ms": 0.293,
+      "hard_failure": false,
+      "soft_failure": false,
+      "cascading_soft_failure": false,
+      "trajectory": [
+        {
+          "type": "decision",
+          "iteration": 1,
+          "action": "get_product_info",
+          "arguments": {
+            "product_id": "PROD-001"
+          },
+          "reason": "The customer requested information about a specific product.",
+          "confidence": 0.99,
+          "tokens": {
+            "input_tokens": 267,
+            "output_tokens": 42,
+            "total_tokens": 309,
+            "estimated": true
+          }
+        },
+        {
+          "type": "tool_execution",
+          "iteration": 1,
+          "action": "get_product_info",
+          "arguments": {
+            "product_id": "PROD-001"
+          },
+          "success": true,
+          "latency_ms": 0.186,
+          "error": null
+        },
+        {
+          "type": "decision",
+          "iteration": 2,
+          "action": "final_answer",
+          "arguments": {},
+          "reason": "The product information has been retrieved.",
+          "confidence": 0.99,
+          "tokens": {
+            "input_tokens": 529,
+            "output_tokens": 30,
+            "total_tokens": 559,
+            "estimated": true
+          }
+        },
+        {
+          "type": "final_answer_generation",
+          "iteration": 2,
+          "latency_ms": 0.004,
+          "tokens": {
+            "input_tokens": 310,
+            "output_tokens": 12,
+            "total_tokens": 322,
+            "estimated": true
+          }
+        }
+      ],
+      "answer": "Product PROD-001 information has been verified."
+    },
+    {
+      "id": "return_eligibility",
+      "category": "transactional",
+      "completion": true,
+      "status_correct": true,
+      "tool_calls_correct": true,
+      "arguments_correct": true,
+      "expected_actions": [
+        "check_return_eligibility"
+      ],
+      "actual_actions": [
+        "check_return_eligibility"
+      ],
+      "expected_arguments": [
+        {
+          "order_id": "ORD-1003"
+        }
+      ],
+      "actual_arguments": [
+        {
+          "order_id": "ORD-1003"
+        }
+      ],
+      "status": "completed",
+      "iterations": 2,
+      "tool_calls": 1,
+      "tokens": 1163,
+      "latency_ms": 0.202,
+      "hard_failure": false,
+      "soft_failure": false,
+      "cascading_soft_failure": false,
+      "trajectory": [
+        {
+          "type": "decision",
+          "iteration": 1,
+          "action": "check_return_eligibility",
+          "arguments": {
+            "order_id": "ORD-1003"
+          },
+          "reason": "Return eligibility must be checked for the requested order.",
+          "confidence": 0.99,
+          "tokens": {
+            "input_tokens": 267,
+            "output_tokens": 43,
+            "total_tokens": 310,
+            "estimated": true
+          }
+        },
+        {
+          "type": "tool_execution",
+          "iteration": 1,
+          "action": "check_return_eligibility",
+          "arguments": {
+            "order_id": "ORD-1003"
+          },
+          "success": true,
+          "latency_ms": 0.126,
+          "error": null
+        },
+        {
+          "type": "decision",
+          "iteration": 2,
+          "action": "final_answer",
+          "arguments": {},
+          "reason": "Return eligibility has been verified.",
+          "confidence": 0.99,
+          "tokens": {
+            "input_tokens": 516,
+            "output_tokens": 29,
+            "total_tokens": 545,
+            "estimated": true
+          }
+        },
+        {
+          "type": "final_answer_generation",
+          "iteration": 2,
+          "latency_ms": 0.003,
+          "tokens": {
+            "input_tokens": 294,
+            "output_tokens": 14,
+            "total_tokens": 308,
+            "estimated": true
+          }
+        }
+      ],
+      "answer": "The return eligibility for ORD-1003 has been verified."
+    },
+    {
+      "id": "multi_step_return_policy",
+      "category": "cross_source",
+      "completion": true,
+      "status_correct": true,
+      "tool_calls_correct": true,
+      "arguments_correct": true,
+      "expected_actions": [
+        "check_return_eligibility",
+        "search_knowledge"
+      ],
+      "actual_actions": [
+        "check_return_eligibility",
+        "search_knowledge"
+      ],
+      "expected_arguments": [
+        {
+          "order_id": "ORD-1003"
+        },
+        {
+          "query": "return policy eligibility and return requirements"
+        }
+      ],
+      "actual_arguments": [
+        {
+          "order_id": "ORD-1003"
+        },
+        {
+          "query": "return policy eligibility and return requirements"
+        }
+      ],
+      "status": "completed",
+      "iterations": 3,
+      "tool_calls": 2,
+      "tokens": 2294,
+      "latency_ms": 2016.313,
+      "hard_failure": false,
+      "soft_failure": false,
+      "cascading_soft_failure": false,
+      "trajectory": [
+        {
+          "type": "decision",
+          "iteration": 1,
+          "action": "check_return_eligibility",
+          "arguments": {
+            "order_id": "ORD-1003"
+          },
+          "reason": "The order-specific eligibility must be established first.",
+          "confidence": 0.98,
+          "tokens": {
+            "input_tokens": 274,
+            "output_tokens": 42,
+            "total_tokens": 316,
+            "estimated": true
+          }
+        },
+        {
+          "type": "tool_execution",
+          "iteration": 1,
+          "action": "check_return_eligibility",
+          "arguments": {
+            "order_id": "ORD-1003"
+          },
+          "success": true,
+          "latency_ms": 0.137,
+          "error": null
+        },
+        {
+          "type": "decision",
+          "iteration": 2,
+          "action": "search_knowledge",
+          "arguments": {
+            "query": "return policy eligibility and return requirements"
+          },
+          "reason": "The customer also asked for the documented return policy.",
+          "confidence": 0.97,
+          "tokens": {
+            "input_tokens": 523,
+            "output_tokens": 50,
+            "total_tokens": 573,
+            "estimated": true
+          }
+        },
+        {
+          "type": "tool_execution",
+          "iteration": 2,
+          "action": "search_knowledge",
+          "arguments": {
+            "query": "return policy eligibility and return requirements"
+          },
+          "success": false,
+          "latency_ms": 2015.945,
+          "error": "Knowledge search failed: OSError: [WinError 4551] An Application Control policy has blocked this file. Error loading \"C:\\Users\\LENOVO\\Desktop\\MLOps-DataScience-AgenticAI\\track-b-agentic-ai\\.venv\\Lib\\site-packages\\torch\\lib\\torch_global_deps.dll\" or one of its dependencies."
+        },
+        {
+          "type": "decision",
+          "iteration": 3,
+          "action": "final_answer",
+          "arguments": {},
+          "reason": "Both order-specific and policy evidence are available.",
+          "confidence": 0.98,
+          "tokens": {
+            "input_tokens": 910,
+            "output_tokens": 33,
+            "total_tokens": 943,
+            "estimated": true
+          }
+        },
+        {
+          "type": "final_answer_generation",
+          "iteration": 3,
+          "latency_ms": 0.006,
+          "tokens": {
+            "input_tokens": 439,
+            "output_tokens": 23,
+            "total_tokens": 462,
+            "estimated": true
+          }
+        }
+      ],
+      "answer": "The order-specific return eligibility and documented return policy have both been verified."
+    },
+    {
+      "id": "order_and_policy",
+      "category": "cross_source",
+      "completion": true,
+      "status_correct": true,
+      "tool_calls_correct": true,
+      "arguments_correct": true,
+      "expected_actions": [
+        "get_order_status",
+        "search_knowledge"
+      ],
+      "actual_actions": [
+        "get_order_status",
+        "search_knowledge"
+      ],
+      "expected_arguments": [
+        {
+          "order_id": "ORD-1003"
+        },
+        {
+          "query": "shipping policy"
+        }
+      ],
+      "actual_arguments": [
+        {
+          "order_id": "ORD-1003"
+        },
+        {
+          "query": "shipping policy"
+        }
+      ],
+      "status": "completed",
+      "iterations": 3,
+      "tool_calls": 2,
+      "tokens": 2188,
+      "latency_ms": 82.542,
+      "hard_failure": false,
+      "soft_failure": false,
+      "cascading_soft_failure": false,
+      "trajectory": [
+        {
+          "type": "decision",
+          "iteration": 1,
+          "action": "get_order_status",
+          "arguments": {
+            "order_id": "ORD-1003"
+          },
+          "reason": "The order status is one part of the request.",
+          "confidence": 0.98,
+          "tokens": {
+            "input_tokens": 275,
+            "output_tokens": 37,
+            "total_tokens": 312,
+            "estimated": true
+          }
+        },
+        {
+          "type": "tool_execution",
+          "iteration": 1,
+          "action": "get_order_status",
+          "arguments": {
+            "order_id": "ORD-1003"
+          },
+          "success": true,
+          "latency_ms": 0.261,
+          "error": null
+        },
+        {
+          "type": "decision",
+          "iteration": 2,
+          "action": "search_knowledge",
+          "arguments": {
+            "query": "shipping policy"
+          },
+          "reason": "The second part requires documented policy information.",
+          "confidence": 0.98,
+          "tokens": {
+            "input_tokens": 500,
+            "output_tokens": 41,
+            "total_tokens": 541,
+            "estimated": true
+          }
+        },
+        {
+          "type": "tool_execution",
+          "iteration": 2,
+          "action": "search_knowledge",
+          "arguments": {
+            "query": "shipping policy"
+          },
+          "success": false,
+          "latency_ms": 81.805,
+          "error": "Knowledge search failed: OSError: [WinError 4551] An Application Control policy has blocked this file. Error loading \"C:\\Users\\LENOVO\\Desktop\\MLOps-DataScience-AgenticAI\\track-b-agentic-ai\\.venv\\Lib\\site-packages\\torch\\lib\\torch_global_deps.dll\" or one of its dependencies."
+        },
+        {
+          "type": "decision",
+          "iteration": 3,
+          "action": "final_answer",
+          "arguments": {},
+          "reason": "Both requested evidence sources are available.",
+          "confidence": 0.98,
+          "tokens": {
+            "input_tokens": 868,
+            "output_tokens": 31,
+            "total_tokens": 899,
+            "estimated": true
+          }
+        },
+        {
+          "type": "final_answer_generation",
+          "iteration": 3,
+          "latency_ms": 0.02,
+          "tokens": {
+            "input_tokens": 422,
+            "output_tokens": 14,
+            "total_tokens": 436,
+            "estimated": true
+          }
+        }
+      ],
+      "answer": "The order status and shipping policy have been verified."
+    },
+    {
+      "id": "missing_order_id",
+      "category": "clarification",
+      "completion": true,
+      "status_correct": true,
+      "tool_calls_correct": false,
+      "arguments_correct": false,
+      "expected_actions": [
+        "ask_clarification"
+      ],
+      "actual_actions": [],
+      "expected_arguments": [
+        {
+          "question": "Could you provide the order ID so I can check its status?"
+        }
+      ],
+      "actual_arguments": [],
+      "status": "clarification_required",
+      "iterations": 1,
+      "tool_calls": 0,
+      "tokens": 321,
+      "latency_ms": 0.093,
+      "hard_failure": false,
+      "soft_failure": false,
+      "cascading_soft_failure": false,
+      "trajectory": [
+        {
+          "type": "decision",
+          "iteration": 1,
+          "action": "ask_clarification",
+          "arguments": {
+            "question": "Could you provide the order ID so I can check its status?"
+          },
+          "reason": "An order identifier is required to perform the lookup.",
+          "confidence": 0.99,
+          "tokens": {
+            "input_tokens": 269,
+            "output_tokens": 52,
+            "total_tokens": 321,
+            "estimated": true
+          }
+        }
+      ],
+      "answer": "Could you provide the order ID so I can check its status?"
+    },
+    {
+      "id": "missing_product_id",
+      "category": "clarification",
+      "completion": true,
+      "status_correct": true,
+      "tool_calls_correct": false,
+      "arguments_correct": false,
+      "expected_actions": [
+        "ask_clarification"
+      ],
+      "actual_actions": [],
+      "expected_arguments": [
+        {
+          "question": "Could you provide the product ID?"
+        }
+      ],
+      "actual_arguments": [],
+      "status": "clarification_required",
+      "iterations": 1,
+      "tool_calls": 0,
+      "tokens": 315,
+      "latency_ms": 0.048,
+      "hard_failure": false,
+      "soft_failure": false,
+      "cascading_soft_failure": false,
+      "trajectory": [
+        {
+          "type": "decision",
+          "iteration": 1,
+          "action": "ask_clarification",
+          "arguments": {
+            "question": "Could you provide the product ID?"
+          },
+          "reason": "The product cannot be identified from the request.",
+          "confidence": 0.98,
+          "tokens": {
+            "input_tokens": 270,
+            "output_tokens": 45,
+            "total_tokens": 315,
+            "estimated": true
+          }
+        }
+      ],
+      "answer": "Could you provide the product ID?"
+    },
+    {
+      "id": "unknown_order",
+      "category": "missing_information",
+      "completion": true,
+      "status_correct": true,
+      "tool_calls_correct": true,
+      "arguments_correct": true,
+      "expected_actions": [
+        "get_order_status"
+      ],
+      "actual_actions": [
+        "get_order_status"
+      ],
+      "expected_arguments": [
+        {
+          "order_id": "ORD-9999"
+        }
+      ],
+      "actual_arguments": [
+        {
+          "order_id": "ORD-9999"
+        }
+      ],
+      "status": "completed",
+      "iterations": 2,
+      "tool_calls": 1,
+      "tokens": 1148,
+      "latency_ms": 0.552,
+      "hard_failure": false,
+      "soft_failure": false,
+      "cascading_soft_failure": false,
+      "trajectory": [
+        {
+          "type": "decision",
+          "iteration": 1,
+          "action": "get_order_status",
+          "arguments": {
+            "order_id": "ORD-9999"
+          },
+          "reason": "The order ID was explicitly provided and should be checked.",
+          "confidence": 0.99,
+          "tokens": {
+            "input_tokens": 269,
+            "output_tokens": 41,
+            "total_tokens": 310,
+            "estimated": true
+          }
+        },
+        {
+          "type": "tool_execution",
+          "iteration": 1,
+          "action": "get_order_status",
+          "arguments": {
+            "order_id": "ORD-9999"
+          },
+          "success": false,
+          "latency_ms": 0.386,
+          "error": "Order ORD-9999 was not found."
+        },
+        {
+          "type": "decision",
+          "iteration": 2,
+          "action": "final_answer",
+          "arguments": {},
+          "reason": "The lookup result must be reported without inventing an order.",
+          "confidence": 0.95,
+          "tokens": {
+            "input_tokens": 509,
+            "output_tokens": 35,
+            "total_tokens": 544,
+            "estimated": true
+          }
+        },
+        {
+          "type": "final_answer_generation",
+          "iteration": 2,
+          "latency_ms": 0.006,
+          "tokens": {
+            "input_tokens": 278,
+            "output_tokens": 16,
+            "total_tokens": 294,
+            "estimated": true
+          }
+        }
+      ],
+      "answer": "Order ORD-9999 could not be verified because it was not found."
+    },
+    {
+      "id": "rag_policy",
+      "category": "knowledge_search",
+      "completion": true,
+      "status_correct": true,
+      "tool_calls_correct": true,
+      "arguments_correct": true,
+      "expected_actions": [
+        "search_knowledge"
+      ],
+      "actual_actions": [
+        "search_knowledge"
+      ],
+      "expected_arguments": [
+        {
+          "query": "return policy"
+        }
+      ],
+      "actual_arguments": [
+        {
+          "query": "return policy"
+        }
+      ],
+      "status": "completed",
+      "iterations": 2,
+      "tool_calls": 1,
+      "tokens": 1323,
+      "latency_ms": 75.366,
+      "hard_failure": false,
+      "soft_failure": false,
+      "cascading_soft_failure": false,
+      "trajectory": [
+        {
+          "type": "decision",
+          "iteration": 1,
+          "action": "search_knowledge",
+          "arguments": {
+            "query": "return policy"
+          },
+          "reason": "The request is about documented policy information.",
+          "confidence": 0.99,
+          "tokens": {
+            "input_tokens": 266,
+            "output_tokens": 39,
+            "total_tokens": 305,
+            "estimated": true
+          }
+        },
+        {
+          "type": "tool_execution",
+          "iteration": 1,
+          "action": "search_knowledge",
+          "arguments": {
+            "query": "return policy"
+          },
+          "success": false,
+          "latency_ms": 75.155,
+          "error": "Knowledge search failed: OSError: [WinError 4551] An Application Control policy has blocked this file. Error loading \"C:\\Users\\LENOVO\\Desktop\\MLOps-DataScience-AgenticAI\\track-b-agentic-ai\\.venv\\Lib\\site-packages\\torch\\lib\\torch_global_deps.dll\" or one of its dependencies."
+        },
+        {
+          "type": "decision",
+          "iteration": 2,
+          "action": "final_answer",
+          "arguments": {},
+          "reason": "The relevant policy evidence has been retrieved.",
+          "confidence": 0.99,
+          "tokens": {
+            "input_tokens": 634,
+            "output_tokens": 32,
+            "total_tokens": 666,
+            "estimated": true
+          }
+        },
+        {
+          "type": "final_answer_generation",
+          "iteration": 2,
+          "latency_ms": 0.005,
+          "tokens": {
+            "input_tokens": 340,
+            "output_tokens": 12,
+            "total_tokens": 352,
+            "estimated": true
+          }
+        }
+      ],
+      "answer": "The documented return policy has been retrieved."
+    },
+    {
+      "id": "order_product_combination",
+      "category": "cross_source",
+      "completion": true,
+      "status_correct": true,
+      "tool_calls_correct": true,
+      "arguments_correct": true,
+      "expected_actions": [
+        "get_order_status",
+        "get_product_info"
+      ],
+      "actual_actions": [
+        "get_order_status",
+        "get_product_info"
+      ],
+      "expected_arguments": [
+        {
+          "order_id": "ORD-1003"
+        },
+        {
+          "product_id": "PROD-001"
+        }
+      ],
+      "actual_arguments": [
+        {
+          "order_id": "ORD-1003"
+        },
+        {
+          "product_id": "PROD-001"
+        }
+      ],
+      "status": "completed",
+      "iterations": 3,
+      "tool_calls": 2,
+      "tokens": 2061,
+      "latency_ms": 0.493,
+      "hard_failure": false,
+      "soft_failure": false,
+      "cascading_soft_failure": false,
+      "trajectory": [
+        {
+          "type": "decision",
+          "iteration": 1,
+          "action": "get_order_status",
+          "arguments": {
+            "order_id": "ORD-1003"
+          },
+          "reason": "The order status must be established first.",
+          "confidence": 0.97,
+          "tokens": {
+            "input_tokens": 277,
+            "output_tokens": 37,
+            "total_tokens": 314,
+            "estimated": true
+          }
+        },
+        {
+          "type": "tool_execution",
+          "iteration": 1,
+          "action": "get_order_status",
+          "arguments": {
+            "order_id": "ORD-1003"
+          },
+          "success": true,
+          "latency_ms": 0.214,
+          "error": null
+        },
+        {
+          "type": "decision",
+          "iteration": 2,
+          "action": "get_product_info",
+          "arguments": {
+            "product_id": "PROD-001"
+          },
+          "reason": "Product information is required for the second part of the request.",
+          "confidence": 0.96,
+          "tokens": {
+            "input_tokens": 501,
+            "output_tokens": 43,
+            "total_tokens": 544,
+            "estimated": true
+          }
+        },
+        {
+          "type": "tool_execution",
+          "iteration": 2,
+          "action": "get_product_info",
+          "arguments": {
+            "product_id": "PROD-001"
+          },
+          "success": true,
+          "latency_ms": 0.125,
+          "error": null
+        },
+        {
+          "type": "decision",
+          "iteration": 3,
+          "action": "final_answer",
+          "arguments": {},
+          "reason": "The requested order and product evidence are available.",
+          "confidence": 0.97,
+          "tokens": {
+            "input_tokens": 764,
+            "output_tokens": 33,
+            "total_tokens": 797,
+            "estimated": true
+          }
+        },
+        {
+          "type": "final_answer_generation",
+          "iteration": 3,
+          "latency_ms": 0.004,
+          "tokens": {
+            "input_tokens": 392,
+            "output_tokens": 14,
+            "total_tokens": 406,
+            "estimated": true
+          }
+        }
+      ],
+      "answer": "The order and product information have been verified."
+    }
+  ]
+}

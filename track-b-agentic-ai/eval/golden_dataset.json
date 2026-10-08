@@ -1,0 +1,32 @@
+[
+  {
+    "id": "reg_001",
+    "query": "What is the return policy?",
+    "reference_response": "Our return policy allows returns within 30 days of purchase for items in original condition. Items must be unused and in original packaging. To initiate a return, contact our support team with your order ID. Certain items like perishables or personalized products may not be eligible for return.",
+    "category": "policy"
+  },
+  {
+    "id": "reg_002",
+    "query": "What is the status of order ORD-1003?",
+    "reference_response": "Order ORD-1003 has been successfully retrieved. The order is currently [status from mock data] and all order details are available.",
+    "category": "order_lookup"
+  },
+  {
+    "id": "reg_003",
+    "query": "Can I return order ORD-1003?",
+    "reference_response": "I've checked the return eligibility for order ORD-1003. Based on the order details and our return policy, this order [is/is not] eligible for return within the standard 30-day return window.",
+    "category": "transactional"
+  },
+  {
+    "id": "reg_004",
+    "query": "What is your shipping policy?",
+    "reference_response": "Our shipping policy covers standard and express delivery options. Standard shipping typically takes 5-7 business days. Express shipping is available for faster delivery. Free shipping may be available for orders above a certain threshold.",
+    "category": "policy"
+  },
+  {
+    "id": "reg_005",
+    "query": "Tell me about product PROD-001.",
+    "reference_response": "Product PROD-001 information has been retrieved. The product details include name, price, availability, and description based on our current inventory.",
+    "category": "product"
+  }
+]

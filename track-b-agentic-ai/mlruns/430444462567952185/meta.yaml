@@ -1,0 +1,9 @@
+artifact_location: file:C:/Users/LENOVO/Desktop/MLOps-DataScience-AgenticAI/track-b-agentic-ai/mlruns/430444462567952185
+creation_time: 1791460976303
+effective_trace_archival_retention: null
+experiment_id: '430444462567952185'
+last_update_time: 1791460976303
+lifecycle_stage: active
+name: shopassist-agentic-evaluation
+trace_location: null
+workspace: default

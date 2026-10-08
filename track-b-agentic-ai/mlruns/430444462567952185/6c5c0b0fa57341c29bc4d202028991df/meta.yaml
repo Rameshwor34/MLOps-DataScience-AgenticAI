@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/LENOVO/Desktop/MLOps-DataScience-AgenticAI/track-b-agentic-ai/mlruns/430444462567952185/6c5c0b0fa57341c29bc4d202028991df/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '430444462567952185'
+lifecycle_stage: active
+run_id: 6c5c0b0fa57341c29bc4d202028991df
+run_name: prompt-v1-traces
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1791460976513
+status: 1
+tags: []
+user_id: LENOVO

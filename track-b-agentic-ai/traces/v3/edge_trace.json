@@ -1,0 +1,14 @@
+{
+  "query": "Can you check the status of my order?",
+  "prompt_version": "v3",
+  "trajectory": [
+    {
+      "type": "hard_failure",
+      "iteration": 1,
+      "error": "NotFoundError: Error code: 404 - {'error': {'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements.', 'code': 'not_found'}}"
+    }
+  ],
+  "final_answer": null,
+  "termination_reason": "failed",
+  "generated_by": "real_gemini"
+}

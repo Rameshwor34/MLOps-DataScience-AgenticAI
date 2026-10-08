@@ -1,0 +1,63 @@
+{
+  "query": "What is the status of order ORD-1003?",
+  "prompt_version": "v1",
+  "trajectory": [
+    {
+      "type": "decision",
+      "iteration": 1,
+      "action": "get_order_status",
+      "arguments": {
+        "order_id": "ORD-1003"
+      },
+      "reason": "Customer provided order ID ORD-1003 and wants to know its status.",
+      "confidence": 0.95,
+      "tokens": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 448,
+        "estimated": false
+      }
+    },
+    {
+      "type": "tool_execution",
+      "iteration": 1,
+      "action": "get_order_status",
+      "arguments": {
+        "order_id": "ORD-1003"
+      },
+      "success": true,
+      "latency_ms": 0.287,
+      "error": null
+    },
+    {
+      "type": "decision",
+      "iteration": 2,
+      "action": "final_answer",
+      "arguments": {
+        "message": "Order ORD-1003 has been delivered."
+      },
+      "reason": "The status of order ORD-1003 has been retrieved and is confirmed as delivered.",
+      "confidence": 0.99,
+      "tokens": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 747,
+        "estimated": false
+      }
+    },
+    {
+      "type": "final_answer_generation",
+      "iteration": 2,
+      "latency_ms": 10202.753,
+      "tokens": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 372,
+        "estimated": false
+      }
+    }
+  ],
+  "final_answer": "The status of order ORD-1003 is **delivered**.",
+  "termination_reason": "completed",
+  "generated_by": "real_gemini"
+}
