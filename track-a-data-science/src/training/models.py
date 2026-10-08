@@ -9,6 +9,7 @@ def build_models() -> dict[str, object]:
 
     return {
         "logistic_regression": LogisticRegression(
+            solver="liblinear",
             max_iter=1000,
             random_state=42,
         ),
@@ -35,3 +36,4 @@ if __name__ == "__main__":
 
     for name, model in models.items():
         print(f"{name}: {model.__class__.__name__}")
+
