@@ -1,4 +1,4 @@
-﻿import hashlib
+import hashlib
 import time
 from collections import defaultdict, deque
 from threading import Lock
@@ -7,8 +7,14 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from backend.services.agentic_service import AgenticService
-
+from backend.agents.factory import create_agentic_service
+from backend.llm.gemini_provider import (
+    GeminiAuthenticationError,
+    GeminiModelError,
+    GeminiProviderError,
+    GeminiQuotaError,
+    GeminiTimeoutError,
+)
 
 app = FastAPI(
     title="ShopAssist AI",
@@ -72,8 +78,9 @@ rate_limiter = RateLimiter(
     window_seconds=60,
 )
 
+agentic_service = create_agentic_service()
+
 # W16 agentic service does not eagerly import the RAG stack.
-agentic_service = AgenticService()
 
 _cache = {}
 _cache_lock = Lock()
@@ -306,27 +313,93 @@ def agent_chat(
 
         return response
 
+    except GeminiQuotaError as exc:
+        print(
+            f"Agent provider quota failure: "
+            f"{type(exc).__name__}: {exc}"
+        )
+
+        raise HTTPException(
+            status_code=429,
+            detail={
+                "error": "provider_rate_limited",
+                "message": (
+                    "The AI provider is temporarily "
+                    "rate-limited. Please retry after "
+                    "the quota resets."
+                ),
+            },
+        )
+
+    except GeminiTimeoutError as exc:
+        print(
+            f"Agent provider timeout: "
+            f"{type(exc).__name__}: {exc}"
+        )
+
+        raise HTTPException(
+            status_code=504,
+            detail={
+                "error": "provider_timeout",
+                "message": (
+                    "The AI provider did not respond "
+                    "within the allowed time."
+                ),
+            },
+        )
+
+    except GeminiAuthenticationError as exc:
+        print(
+            f"Agent provider authentication failure: "
+            f"{type(exc).__name__}: {exc}"
+        )
+
+        raise HTTPException(
+            status_code=503,
+            detail={
+                "error": "provider_authentication_failed",
+                "message": (
+                    "The AI provider could not "
+                    "authenticate the request."
+                ),
+            },
+        )
+
+    except GeminiModelError as exc:
+        print(
+            f"Agent provider model failure: "
+            f"{type(exc).__name__}: {exc}"
+        )
+
+        raise HTTPException(
+            status_code=503,
+            detail={
+                "error": "provider_model_unavailable",
+                "message": (
+                    "The configured AI model is "
+                    "currently unavailable."
+                ),
+            },
+        )
+
+    except GeminiProviderError as exc:
+        print(
+            f"Agent provider failure: "
+            f"{type(exc).__name__}: {exc}"
+        )
+
+        raise HTTPException(
+            status_code=503,
+            detail={
+                "error": "provider_unavailable",
+                "message": (
+                    "The AI provider is temporarily "
+                    "unavailable. Please retry shortly."
+                ),
+            },
+        )
+
     except Exception as exc:
-        error_name = type(exc).__name__
-        error_text = str(exc).lower()
-
-        if (
-            "ratelimit" in error_name.lower()
-            or "quota" in error_text
-            or "429" in error_text
-        ):
-            raise HTTPException(
-                status_code=429,
-                detail={
-                    "error": "provider_rate_limited",
-                    "message": (
-                        "The AI provider is temporarily "
-                        "rate-limited. Please retry after "
-                        "the quota resets."
-                    ),
-                },
-            )
-
         print(
             f"Agent request failed: "
             f"{type(exc).__name__}: {exc}"

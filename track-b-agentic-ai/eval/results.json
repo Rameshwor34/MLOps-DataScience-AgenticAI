@@ -4,12 +4,15 @@
   "metrics": {
     "total_cases": 10,
     "task_completion_rate": 1.0,
-    "tool_call_correctness": 0.8,
-    "argument_correctness": 0.8,
+    "tool_case_count": 8,
+    "tool_call_correctness": 1.0,
+    "argument_correctness": 1.0,
+    "clarification_case_count": 2,
+    "clarification_correctness": 1.0,
     "average_trajectory_length": 2.1,
     "average_tool_calls": 1.1,
-    "average_tokens": 1976.3,
-    "average_latency_ms": 235.6621,
+    "average_tokens": 1936.3,
+    "average_latency_ms": 1158.6794,
     "hard_failures": 0,
     "soft_failures": 0,
     "cascading_soft_failures": 0
@@ -20,8 +23,11 @@
       "category": "simple_lookup",
       "completion": true,
       "status_correct": true,
+      "tool_case": true,
       "tool_calls_correct": true,
       "arguments_correct": true,
+      "clarification_expected": false,
+      "clarification_correct": false,
       "expected_actions": [
         "get_order_status"
       ],
@@ -38,11 +44,15 @@
           "order_id": "ORD-1003"
         }
       ],
+      "decision_sequence": [
+        "get_order_status",
+        "final_answer"
+      ],
       "status": "completed",
       "iterations": 2,
       "tool_calls": 1,
-      "tokens": 1765,
-      "latency_ms": 0.537,
+      "tokens": 1823,
+      "latency_ms": 0.478,
       "hard_failure": false,
       "soft_failure": false,
       "cascading_soft_failure": false,
@@ -70,9 +80,9 @@
           "arguments": {
             "order_id": "ORD-1003"
           },
-          "success": true,
-          "latency_ms": 0.243,
-          "error": null
+          "success": false,
+          "latency_ms": 0.192,
+          "error": "Malformed get_order_status observation: missing required field(s): ['order_id', 'status']."
         },
         {
           "type": "decision",
@@ -82,9 +92,9 @@
           "reason": "The order status has been verified.",
           "confidence": 0.99,
           "tokens": {
-            "input_tokens": 817,
+            "input_tokens": 860,
             "output_tokens": 28,
-            "total_tokens": 845,
+            "total_tokens": 888,
             "estimated": true
           }
         },
@@ -93,9 +103,9 @@
           "iteration": 2,
           "latency_ms": 0.005,
           "tokens": {
-            "input_tokens": 278,
+            "input_tokens": 293,
             "output_tokens": 12,
-            "total_tokens": 290,
+            "total_tokens": 305,
             "estimated": true
           }
         }
@@ -107,8 +117,11 @@
       "category": "simple_lookup",
       "completion": true,
       "status_correct": true,
+      "tool_case": true,
       "tool_calls_correct": true,
       "arguments_correct": true,
+      "clarification_expected": false,
+      "clarification_correct": false,
       "expected_actions": [
         "get_product_info"
       ],
@@ -125,11 +138,15 @@
           "product_id": "PROD-001"
         }
       ],
+      "decision_sequence": [
+        "get_product_info",
+        "final_answer"
+      ],
       "status": "completed",
       "iterations": 2,
       "tool_calls": 1,
-      "tokens": 1832,
-      "latency_ms": 0.427,
+      "tokens": 1842,
+      "latency_ms": 0.692,
       "hard_failure": false,
       "soft_failure": false,
       "cascading_soft_failure": false,
@@ -157,9 +174,9 @@
           "arguments": {
             "product_id": "PROD-001"
           },
-          "success": true,
-          "latency_ms": 0.218,
-          "error": null
+          "success": false,
+          "latency_ms": 0.536,
+          "error": "Malformed get_product_info observation: missing required field(s): ['product_id', 'name', 'price', 'description']."
         },
         {
           "type": "decision",
@@ -169,9 +186,9 @@
           "reason": "The product information has been retrieved.",
           "confidence": 0.99,
           "tokens": {
-            "input_tokens": 850,
+            "input_tokens": 872,
             "output_tokens": 30,
-            "total_tokens": 880,
+            "total_tokens": 902,
             "estimated": true
           }
         },
@@ -180,9 +197,9 @@
           "iteration": 2,
           "latency_ms": 0.005,
           "tokens": {
-            "input_tokens": 310,
+            "input_tokens": 298,
             "output_tokens": 12,
-            "total_tokens": 322,
+            "total_tokens": 310,
             "estimated": true
           }
         }
@@ -194,8 +211,11 @@
       "category": "transactional",
       "completion": true,
       "status_correct": true,
+      "tool_case": true,
       "tool_calls_correct": true,
       "arguments_correct": true,
+      "clarification_expected": false,
+      "clarification_correct": false,
       "expected_actions": [
         "check_return_eligibility"
       ],
@@ -212,11 +232,15 @@
           "order_id": "ORD-1003"
         }
       ],
+      "decision_sequence": [
+        "check_return_eligibility",
+        "final_answer"
+      ],
       "status": "completed",
       "iterations": 2,
       "tool_calls": 1,
       "tokens": 1803,
-      "latency_ms": 0.405,
+      "latency_ms": 0.267,
       "hard_failure": false,
       "soft_failure": false,
       "cascading_soft_failure": false,
@@ -245,7 +269,7 @@
             "order_id": "ORD-1003"
           },
           "success": true,
-          "latency_ms": 0.156,
+          "latency_ms": 0.16,
           "error": null
         },
         {
@@ -265,7 +289,7 @@
         {
           "type": "final_answer_generation",
           "iteration": 2,
-          "latency_ms": 0.004,
+          "latency_ms": 0.003,
           "tokens": {
             "input_tokens": 294,
             "output_tokens": 14,
@@ -281,8 +305,11 @@
       "category": "cross_source",
       "completion": true,
       "status_correct": true,
+      "tool_case": true,
       "tool_calls_correct": true,
       "arguments_correct": true,
+      "clarification_expected": false,
+      "clarification_correct": false,
       "expected_actions": [
         "check_return_eligibility",
         "search_knowledge"
@@ -307,11 +334,16 @@
           "query": "return policy eligibility and return requirements"
         }
       ],
+      "decision_sequence": [
+        "check_return_eligibility",
+        "search_knowledge",
+        "final_answer"
+      ],
       "status": "completed",
       "iterations": 3,
       "tool_calls": 2,
-      "tokens": 3224,
-      "latency_ms": 2263.646,
+      "tokens": 2998,
+      "latency_ms": 11579.294,
       "hard_failure": false,
       "soft_failure": false,
       "cascading_soft_failure": false,
@@ -340,7 +372,7 @@
             "order_id": "ORD-1003"
           },
           "success": true,
-          "latency_ms": 0.133,
+          "latency_ms": 0.14,
           "error": null
         },
         {
@@ -366,9 +398,9 @@
           "arguments": {
             "query": "return policy eligibility and return requirements"
           },
-          "success": false,
-          "latency_ms": 2263.162,
-          "error": "Knowledge search failed: OSError: [WinError 4551] An Application Control policy has blocked this file. Error loading \"C:\\Users\\LENOVO\\Desktop\\Week15\\.venv\\Lib\\site-packages\\torch\\lib\\torch_global_deps.dll\" or one of its dependencies."
+          "success": true,
+          "latency_ms": 11578.762,
+          "error": null
         },
         {
           "type": "decision",
@@ -378,20 +410,20 @@
           "reason": "Both order-specific and policy evidence are available.",
           "confidence": 0.98,
           "tokens": {
-            "input_tokens": 1210,
+            "input_tokens": 1066,
             "output_tokens": 33,
-            "total_tokens": 1243,
+            "total_tokens": 1099,
             "estimated": true
           }
         },
         {
           "type": "final_answer_generation",
           "iteration": 3,
-          "latency_ms": 0.005,
+          "latency_ms": 0.01,
           "tokens": {
-            "input_tokens": 428,
+            "input_tokens": 346,
             "output_tokens": 23,
-            "total_tokens": 451,
+            "total_tokens": 369,
             "estimated": true
           }
         }
@@ -403,8 +435,11 @@
       "category": "cross_source",
       "completion": true,
       "status_correct": true,
+      "tool_case": true,
       "tool_calls_correct": true,
       "arguments_correct": true,
+      "clarification_expected": false,
+      "clarification_correct": false,
       "expected_actions": [
         "get_order_status",
         "search_knowledge"
@@ -429,11 +464,16 @@
           "query": "shipping policy"
         }
       ],
+      "decision_sequence": [
+        "get_order_status",
+        "search_knowledge",
+        "final_answer"
+      ],
       "status": "completed",
       "iterations": 3,
       "tool_calls": 2,
-      "tokens": 3119,
-      "latency_ms": 56.544,
+      "tokens": 2993,
+      "latency_ms": 2.344,
       "hard_failure": false,
       "soft_failure": false,
       "cascading_soft_failure": false,
@@ -461,9 +501,9 @@
           "arguments": {
             "order_id": "ORD-1003"
           },
-          "success": true,
-          "latency_ms": 0.435,
-          "error": null
+          "success": false,
+          "latency_ms": 0.386,
+          "error": "Malformed get_order_status observation: missing required field(s): ['order_id', 'status']."
         },
         {
           "type": "decision",
@@ -475,9 +515,9 @@
           "reason": "The second part requires documented policy information.",
           "confidence": 0.98,
           "tokens": {
-            "input_tokens": 820,
+            "input_tokens": 863,
             "output_tokens": 41,
-            "total_tokens": 861,
+            "total_tokens": 904,
             "estimated": true
           }
         },
@@ -488,9 +528,9 @@
           "arguments": {
             "query": "shipping policy"
           },
-          "success": false,
-          "latency_ms": 55.496,
-          "error": "Knowledge search failed: OSError: [WinError 4551] An Application Control policy has blocked this file. Error loading \"C:\\Users\\LENOVO\\Desktop\\Week15\\.venv\\Lib\\site-packages\\torch\\lib\\torch_global_deps.dll\" or one of its dependencies."
+          "success": true,
+          "latency_ms": 1.607,
+          "error": null
         },
         {
           "type": "decision",
@@ -500,9 +540,9 @@
           "reason": "Both requested evidence sources are available.",
           "confidence": 0.98,
           "tokens": {
-            "input_tokens": 1168,
+            "input_tokens": 1067,
             "output_tokens": 31,
-            "total_tokens": 1199,
+            "total_tokens": 1098,
             "estimated": true
           }
         },
@@ -511,9 +551,9 @@
           "iteration": 3,
           "latency_ms": 0.006,
           "tokens": {
-            "input_tokens": 412,
+            "input_tokens": 344,
             "output_tokens": 14,
-            "total_tokens": 426,
+            "total_tokens": 358,
             "estimated": true
           }
         }
@@ -525,8 +565,11 @@
       "category": "clarification",
       "completion": true,
       "status_correct": true,
+      "tool_case": false,
       "tool_calls_correct": false,
       "arguments_correct": false,
+      "clarification_expected": true,
+      "clarification_correct": true,
       "expected_actions": [
         "ask_clarification"
       ],
@@ -537,11 +580,14 @@
         }
       ],
       "actual_arguments": [],
+      "decision_sequence": [
+        "ask_clarification"
+      ],
       "status": "clarification_required",
       "iterations": 1,
       "tool_calls": 0,
       "tokens": 641,
-      "latency_ms": 0.059,
+      "latency_ms": 0.129,
       "hard_failure": false,
       "soft_failure": false,
       "cascading_soft_failure": false,
@@ -570,8 +616,11 @@
       "category": "clarification",
       "completion": true,
       "status_correct": true,
+      "tool_case": false,
       "tool_calls_correct": false,
       "arguments_correct": false,
+      "clarification_expected": true,
+      "clarification_correct": true,
       "expected_actions": [
         "ask_clarification"
       ],
@@ -582,11 +631,14 @@
         }
       ],
       "actual_arguments": [],
+      "decision_sequence": [
+        "ask_clarification"
+      ],
       "status": "clarification_required",
       "iterations": 1,
       "tool_calls": 0,
       "tokens": 635,
-      "latency_ms": 0.035,
+      "latency_ms": 0.092,
       "hard_failure": false,
       "soft_failure": false,
       "cascading_soft_failure": false,
@@ -615,8 +667,11 @@
       "category": "missing_information",
       "completion": true,
       "status_correct": true,
+      "tool_case": true,
       "tool_calls_correct": true,
       "arguments_correct": true,
+      "clarification_expected": false,
+      "clarification_correct": false,
       "expected_actions": [
         "get_order_status"
       ],
@@ -633,11 +688,15 @@
           "order_id": "ORD-9999"
         }
       ],
+      "decision_sequence": [
+        "get_order_status",
+        "final_answer"
+      ],
       "status": "completed",
       "iterations": 2,
       "tool_calls": 1,
       "tokens": 1788,
-      "latency_ms": 0.308,
+      "latency_ms": 0.494,
       "hard_failure": false,
       "soft_failure": false,
       "cascading_soft_failure": false,
@@ -666,7 +725,7 @@
             "order_id": "ORD-9999"
           },
           "success": false,
-          "latency_ms": 0.175,
+          "latency_ms": 0.295,
           "error": "Order ORD-9999 was not found."
         },
         {
@@ -686,7 +745,7 @@
         {
           "type": "final_answer_generation",
           "iteration": 2,
-          "latency_ms": 0.004,
+          "latency_ms": 0.006,
           "tokens": {
             "input_tokens": 278,
             "output_tokens": 16,
@@ -702,8 +761,11 @@
       "category": "knowledge_search",
       "completion": true,
       "status_correct": true,
+      "tool_case": true,
       "tool_calls_correct": true,
       "arguments_correct": true,
+      "clarification_expected": false,
+      "clarification_correct": false,
       "expected_actions": [
         "search_knowledge"
       ],
@@ -720,11 +782,15 @@
           "query": "return policy"
         }
       ],
+      "decision_sequence": [
+        "search_knowledge",
+        "final_answer"
+      ],
       "status": "completed",
       "iterations": 2,
       "tool_calls": 1,
-      "tokens": 1933,
-      "latency_ms": 33.97,
+      "tokens": 1707,
+      "latency_ms": 1.752,
       "hard_failure": false,
       "soft_failure": false,
       "cascading_soft_failure": false,
@@ -752,9 +818,9 @@
           "arguments": {
             "query": "return policy"
           },
-          "success": false,
-          "latency_ms": 33.783,
-          "error": "Knowledge search failed: OSError: [WinError 4551] An Application Control policy has blocked this file. Error loading \"C:\\Users\\LENOVO\\Desktop\\Week15\\.venv\\Lib\\site-packages\\torch\\lib\\torch_global_deps.dll\" or one of its dependencies."
+          "success": true,
+          "latency_ms": 1.258,
+          "error": null
         },
         {
           "type": "decision",
@@ -764,20 +830,20 @@
           "reason": "The relevant policy evidence has been retrieved.",
           "confidence": 0.99,
           "tokens": {
-            "input_tokens": 934,
+            "input_tokens": 790,
             "output_tokens": 32,
-            "total_tokens": 966,
+            "total_tokens": 822,
             "estimated": true
           }
         },
         {
           "type": "final_answer_generation",
           "iteration": 2,
-          "latency_ms": 0.003,
+          "latency_ms": 0.253,
           "tokens": {
-            "input_tokens": 329,
+            "input_tokens": 247,
             "output_tokens": 12,
-            "total_tokens": 341,
+            "total_tokens": 259,
             "estimated": true
           }
         }
@@ -789,8 +855,11 @@
       "category": "cross_source",
       "completion": true,
       "status_correct": true,
+      "tool_case": true,
       "tool_calls_correct": true,
       "arguments_correct": true,
+      "clarification_expected": false,
+      "clarification_correct": false,
       "expected_actions": [
         "get_order_status",
         "get_product_info"
@@ -815,11 +884,16 @@
           "product_id": "PROD-001"
         }
       ],
+      "decision_sequence": [
+        "get_order_status",
+        "get_product_info",
+        "final_answer"
+      ],
       "status": "completed",
       "iterations": 3,
       "tool_calls": 2,
-      "tokens": 3023,
-      "latency_ms": 0.69,
+      "tokens": 3133,
+      "latency_ms": 1.252,
       "hard_failure": false,
       "soft_failure": false,
       "cascading_soft_failure": false,
@@ -847,9 +921,9 @@
           "arguments": {
             "order_id": "ORD-1003"
           },
-          "success": true,
-          "latency_ms": 0.216,
-          "error": null
+          "success": false,
+          "latency_ms": 0.45,
+          "error": "Malformed get_order_status observation: missing required field(s): ['order_id', 'status']."
         },
         {
           "type": "decision",
@@ -861,9 +935,9 @@
           "reason": "Product information is required for the second part of the request.",
           "confidence": 0.96,
           "tokens": {
-            "input_tokens": 822,
+            "input_tokens": 864,
             "output_tokens": 43,
-            "total_tokens": 865,
+            "total_tokens": 907,
             "estimated": true
           }
         },
@@ -874,9 +948,9 @@
           "arguments": {
             "product_id": "PROD-001"
           },
-          "success": true,
-          "latency_ms": 0.218,
-          "error": null
+          "success": false,
+          "latency_ms": 0.377,
+          "error": "Malformed get_product_info observation: missing required field(s): ['product_id', 'name', 'price', 'description']."
         },
         {
           "type": "decision",
@@ -886,20 +960,20 @@
           "reason": "The requested order and product evidence are available.",
           "confidence": 0.97,
           "tokens": {
-            "input_tokens": 1084,
+            "input_tokens": 1148,
             "output_tokens": 33,
-            "total_tokens": 1117,
+            "total_tokens": 1181,
             "estimated": true
           }
         },
         {
           "type": "final_answer_generation",
           "iteration": 3,
-          "latency_ms": 0.004,
+          "latency_ms": 0.009,
           "tokens": {
-            "input_tokens": 392,
+            "input_tokens": 396,
             "output_tokens": 14,
-            "total_tokens": 406,
+            "total_tokens": 410,
             "estimated": true
           }
         }
