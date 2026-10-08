@@ -1,0 +1,34 @@
+{
+  "experiment": "shopassist-agentic-evaluation",
+  "versions": [
+    {
+      "version": "v1",
+      "prompt_file": "prompts/prompt_v1.txt",
+      "task_completion_rate": 1.0,
+      "tool_call_correctness": 0.8,
+      "argument_correctness": 0.8,
+      "pct_tests_passed": 0.0,
+      "hard_failures": 0
+    },
+    {
+      "version": "v2",
+      "prompt_file": "prompts/prompt_v2.txt",
+      "task_completion_rate": 1.0,
+      "tool_call_correctness": 0.8,
+      "argument_correctness": 0.8,
+      "pct_tests_passed": 0.8,
+      "hard_failures": 0
+    },
+    {
+      "version": "v3",
+      "prompt_file": "prompts/prompt_v3.txt",
+      "task_completion_rate": 1.0,
+      "tool_call_correctness": 0.8,
+      "argument_correctness": 0.8,
+      "pct_tests_passed": 1.0,
+      "hard_failures": 0
+    }
+  ],
+  "winner": "v3",
+  "winner_reason": "v3 maintains optimal evaluation performance while cleanly handling the simulated regression cases with a perfect 100% pass rate."
+}

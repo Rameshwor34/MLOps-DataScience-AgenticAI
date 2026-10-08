@@ -1,0 +1,26 @@
+Track A - MLflow Model Registry Evidence
+============================================================
+
+Registered model: TelcoChurnClassifier
+
+Version: 2
+Run ID: ce598990b11841b282d72a982737a67c
+Source: models:/m-4d59eb391aa744cf8b158ed233fda3f4
+Aliases: []
+Status: READY
+
+Version: 1
+Run ID: 7e4a8d4d84d2468d90fa914b3b59f6eb
+Source: models:/m-b2e811b6f0f3487bb74da6aacd227c87
+Aliases: []
+Status: READY
+
+STAGING ALIAS
+------------------------------
+Version: 1
+Run ID: 7e4a8d4d84d2468d90fa914b3b59f6eb
+
+PRODUCTION ALIAS
+------------------------------
+Version: 1
+Run ID: 7e4a8d4d84d2468d90fa914b3b59f6eb
